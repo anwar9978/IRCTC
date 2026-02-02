@@ -11,8 +11,19 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh 'mvn clean package'
+                echo 'build started'
+                sh 'mvn clean package -Dmaven.test.skip=true'
+                echo 'build completed'
             }
+        }
+        stage('test') {
+            steps {
+                echo 'testing started'
+                sh 'mvn test'
+                sh 'mvn surefire-report:report'
+                echo 'testing  completed'
+            }
+
         }
         stage('SQanalysis') {
             environment {
