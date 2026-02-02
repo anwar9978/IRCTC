@@ -21,7 +21,7 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') {
+        stage('SonarCloud Analysis') {
             steps {
                 withSonarQubeEnv('Anwar_SQ') {
                     sh 'mvn sonar:sonar'
